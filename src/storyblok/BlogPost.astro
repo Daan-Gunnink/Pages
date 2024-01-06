@@ -9,5 +9,6 @@ const content = renderRichText(blok.content)
 <article {...storyblokEditable(blok)}>
   <h1>{blok.title}</h1>
   <p>{blok.description}</p>
+  <img src={blok.image && blok.image.filename}/>
   <Fragment set:html={content} />
 </article>
