@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import storyblok from '@storyblok/astro';
 import { loadEnv } from 'vite';
 
+import vercel from '@astrojs/vercel/serverless';
+
 const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 export default defineConfig({
@@ -15,4 +17,6 @@ export default defineConfig({
       },
     })
   ],
+  output: 'server',
+  adapter: vercel(),
 });
