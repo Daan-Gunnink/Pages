@@ -1,5 +1,14 @@
 ---
 const { blok } = Astro.props
+
+let imageUrl = blok.image && blok.image.filename
+
+if(imageUrl){
+    if(blok.image.focus){
+        imageUrl = imageUrl + `/m/1920x1080/filters:focal(${blok.image.focus})`
+    }
+}
+
 ---
-<img class="w-screen h-screen object-cover" src={blok.image && blok.image.filename}/>
+<img class="w-screen h-screen object-cover" src={imageUrl}/>
 

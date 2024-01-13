@@ -15,12 +15,12 @@ for (let i = 0; i < images.length; i++) {
 //TODO better divide the columns to make an even distribution possibily
 
 ---
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class=`grid grid-cols-2 md:grid-cols-[${numberOfColumns}] gap-4 mt-4 ml-4 mr-4`>
   {
     columns.map((column) => 
       <div class="grid gap-4 h-fit">
         {column.map((file) => 
-          <div class="h-fit max-w-full rounded-lg">
+          <div class="h-full max-w-full rounded-lg">
             <img src={file} />
           </div>
         )}
