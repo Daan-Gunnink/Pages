@@ -1,14 +1,12 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import FloatingLayout from '../layouts/FloatingLayout.astro'
 import StackedLayout from '../layouts/StackedLayout.astro'
 
 const { blok } = Astro.props;
 
 const layout = blok.layout || 'layout_stacked';
-console.log(layout);
 ---
 {
   layout === "layout_floating" && (
