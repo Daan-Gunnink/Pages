@@ -39,6 +39,4 @@ const { data } = await storyblokApi.get(
 const story = data.story;
 ---
 
-<BaseLayout>
-  <StoryblokComponent blok={story.content} />
-</BaseLayout>
+<StoryblokComponent blok={story.content} />
