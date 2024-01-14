@@ -10,17 +10,17 @@ const headerMenu = data?.story?.content?.header_menu
 const headerTitle = data?.story?.content.header_title
 ---
 
-<header class="w-full h-24 bg-[#f7f6fd]"> 
-  <div class="container h-full mx-auto flex items-center justify-between">
+<header class="w-full h-[8rem] bg-[#ffffff] shadow-md"> 
+  <div class="container h-full mx-auto flex items-center justify-center">
     <a href="/">
-      <h1 class="text-[#50b0ae] text-3xl font-bold">{headerTitle}</h1>
+      <h1 class="text-[#000000] text-3xl tracking-widest font-[spinnaker] uppercase">{headerTitle}</h1>
     </a>
-    <nav>
-      <ul class="flex space-x-8 text-lg font-bold">
+    <nav class="ml-20">
+      <ul class="flex space-x-8 text-xl">
         {
           headerMenu.map((menu) => (
             <li>
-              <a href={`/${menu.link.cached_url}`} class="hover:text-[#50b0ae] text-[#ffffff]">
+              <a href={`/${menu.link.cached_url}`} class="hover:text-[#222] text-[#555] uppercase font-[questrial]">
                 {menu.link.story.name}
               </a>
             </li>
