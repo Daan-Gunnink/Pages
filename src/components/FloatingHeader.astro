@@ -1,32 +1,50 @@
 ---
-import { useStoryblokApi } from '@storyblok/astro'
-const storyblokApi = useStoryblokApi()
-const { data } = await storyblokApi.get('cdn/stories/config', {
-  version: 'draft',
-  resolve_links: 'url',
-})
+import { useStoryblokApi } from "@storyblok/astro";
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/stories/config", {
+  version: "draft",
+  resolve_links: "url",
+});
 
-const headerMenu = data?.story?.content?.header_menu
-const headerTitle = data?.story?.content.header_title
+const headerMenu = data?.story?.content?.header_menu;
+const headerTitle = data?.story?.content.header_title;
 ---
 
-<header class="w-full h-[8rem] absolute bg-gradient-to-b from-gray-900 to-transparent"> 
+<header class="w-full h-[8rem] absolute bg-gradient-to-b from-gray-900 to-transparent">
   <div class="container h-full mx-auto flex items-center justify-center">
     <a href="/">
-      <h1 class="text-[#fff] text-3xl tracking-widest font-[spinnaker] uppercase">{headerTitle}</h1>
+      <h1 class="text-[#fff] text-3xl tracking-widest font-[spinnaker] uppercase">
+        {headerTitle}
+      </h1>
     </a>
     <nav class="ml-20">
       <ul class="flex space-x-8 text-xl">
-        {
-          headerMenu.map((menu) => (
-            <li>
-              <a href={`/${menu.link.cached_url}`} class="hover:text-[#000] text-[#fff] uppercase font-[questrial]">
-                {menu.link.story.name}
-              </a>
-            </li>
-          ))
-        }
+        {headerMenu.map((menu) => (
+          <li key={menu.link.story.name} class="relative group">
+            <a
+              href={`/${menu.link.cached_url}`}
+              class="group-hover text-[#fff] uppercase font-[questrial] hover:underline"
+            >
+              {menu.link.story.name}
+            </a>
+            {menu.sublinks && menu.sublinks.length > 0 && (
+              <div class="flex flex-row gap-4 text-sm absolute top-full left-0 hidden p-2 group-hover:flex text-nowrap whitespace-nowrap">
+                {menu.sublinks.map((subItem) => (
+                  <div key={subItem.link.story.name}>
+                    <a
+                      href={`/${subItem.link.cached_url}`}
+                      class="text-[#fff] uppercase font-[questrial] hover:text-bold hover:underline"
+                    >
+                      {subItem.link.story.name}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
+          </li>
+        ))}
       </ul>
     </nav>
   </div>
 </header>
+

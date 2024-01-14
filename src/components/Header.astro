@@ -19,10 +19,24 @@ const headerTitle = data?.story?.content.header_title
       <ul class="flex space-x-8 text-xl">
         {
           headerMenu.map((menu) => (
-            <li>
-              <a href={`/${menu.link.cached_url}`} class="hover:text-[#222] text-[#555] uppercase font-[questrial]">
+            <li key={menu.link.story.name} class="relative group">
+              <a href={`/${menu.link.cached_url}`} class="hover:text-[#222] text-[#555] uppercase font-[questrial] hover:underline">
                 {menu.link.story.name}
               </a>
+              {menu.sublinks && menu.sublinks.length > 0 && (
+              <div class="flex flex-row gap-4 text-sm absolute top-full left-0 hidden  p-2 group-hover:flex text-nowrap whitespace-nowrap">
+                {menu.sublinks.map((subItem) => (
+                  <div key={subItem.link.story.name}>
+                    <a
+                      href={`/${subItem.link.cached_url}`}
+                      class="hover:text-[#222] text-[#555] uppercase font-[questrial] hover:underline"
+                    >
+                      {subItem.link.story.name}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
             </li>
           ))
         }
