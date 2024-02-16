@@ -1,14 +1,21 @@
 ---
-import FloatingHeader from '../components/FloatingHeader.astro';
+import FloatingHeader from "../components/FloatingHeader.astro";
+import MobileFloatingHeader from "../components/MobileFloatingHeader.astro";
 ---
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <FloatingHeader/>
+    <div class="hidden lg:block">
+      <FloatingHeader />
+    </div>
+    <div class="lg:hidden">
+      <MobileFloatingHeader />
+    </div>
     <article>
       <slot />
     </article>

@@ -10,7 +10,7 @@ const headerMenu = data?.story?.content?.header_menu;
 const headerTitle = data?.story?.content.header_title;
 ---
 
-<header class="w-full h-[8rem] absolute bg-gradient-to-b from-gray-900 to-transparent">
+<header class="w-full h-fit absolute bg-gradient-to-b from-gray-900 to-transparent py-20">
   <div class="container h-full mx-auto flex items-center justify-center">
     <a href="/">
       <h1 class="text-[#fff] text-3xl tracking-widest font-[spinnaker] uppercase">
@@ -28,7 +28,7 @@ const headerTitle = data?.story?.content.header_title;
               {menu.link.story.name}
             </a>
             {menu.sublinks && menu.sublinks.length > 0 && (
-              <div class="flex flex-row gap-4 text-sm absolute top-full left-0 hidden p-2 group-hover:flex text-nowrap whitespace-nowrap">
+              <div class="flex flex-col gap-4 text-sm absolute top-full left-0 hidden p-2 group-hover:flex text-nowrap whitespace-nowrap">
                 {menu.sublinks.map((subItem) => (
                   <div key={subItem.link.story.name}>
                     <a
