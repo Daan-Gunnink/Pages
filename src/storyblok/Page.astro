@@ -1,9 +1,33 @@
 ---
-import { storyblokEditable } from '@storyblok/astro'
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
-const { blok } = Astro.props
----
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import FloatingLayout from '../layouts/FloatingLayout.astro'
+import StackedLayout from '../layouts/StackedLayout.astro'
 
-<main {...storyblokEditable(blok)}>
-  {blok.body?.map(blok => {return <StoryblokComponent blok={blok} />})}
-</main>
+const { blok } = Astro.props;
+
+const layout = blok.layout || 'layout_stacked';
+---
+{
+  layout === "layout_floating" && (
+    <FloatingLayout>
+      <main {...storyblokEditable(blok)}>
+        {blok.body?.map((blok) => {
+          return <StoryblokComponent blok={blok} />;
+        })}
+      </main>
+    </FloatingLayout>
+  )
+}
+
+{
+  layout === "layout_stacked" && (
+    <StackedLayout>
+      <main {...storyblokEditable(blok)}>
+        {blok.body?.map((blok) => {
+          return <StoryblokComponent blok={blok} />;
+        })}
+      </main>
+    </StackedLayout>
+  )
+}
