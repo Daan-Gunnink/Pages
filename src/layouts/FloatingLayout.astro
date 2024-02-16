@@ -1,7 +1,6 @@
 ---
 import FloatingHeader from "../components/FloatingHeader.astro";
 import MobileFloatingHeader from "../components/MobileFloatingHeader.astro";
-import MobileHeader from "../components/MobileHeader.astro";
 ---
 
 <html lang="en">
@@ -15,7 +14,7 @@ import MobileHeader from "../components/MobileHeader.astro";
       <FloatingHeader />
     </div>
     <div class="lg:hidden">
-      <MobileHeader />
+      <MobileFloatingHeader />
     </div>
     <article>
       <slot />

@@ -14,6 +14,7 @@ const headerTitle = data?.story?.content.header_title;
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    var mobileHeader = document.getElementById("mobile-header");
     var mobileMenuToggle = document.getElementById("mobile-menu-toggle");
     var mobileMenu = document.getElementById("mobile-menu");
     var toggleIcon = document.getElementById("toggle-icon");
@@ -26,10 +27,13 @@ const headerTitle = data?.story?.content.header_title;
         mobileMenu.style.display = "none";
         toggleIcon.style.display = "none";
         menuIcon.style.display = "block";
+        mobileHeader.style.backdropFilter = 'blur(0px)'
+
       } else {
         mobileMenu.style.display = "block";
         toggleIcon.style.display = "block";
         menuIcon.style.display = "none";
+        mobileHeader.style.backdropFilter = 'blur(8px)'
       }
     });
   });
@@ -57,7 +61,7 @@ const headerTitle = data?.story?.content.header_title;
     </div>
   </div>
 
-  <nav id="mobile-menu" class="hidden absolute backdrop-blur bg-gray-900 bg-opacity-40 w-full h-full p-8">
+  <nav id="mobile-menu" class="hidden absolute backdrop-blur w-full h-full p-8">
     <ul class="flex flex-col text-xl">
       {
         headerMenu.map((menu) => (
@@ -74,7 +78,7 @@ const headerTitle = data?.story?.content.header_title;
                   <div key={subItem.link.story.name}>
                     <a
                       href={`/${subItem.link.cached_url}`}
-                      class="hover:text-[#222] text-white uppercase font-[questrial] hover:text-bold hover:underline"
+                      class="text-white uppercase font-[questrial] hover:text-bold hover:underline"
                     >
                       {subItem.link.story.name}
                     </a>
