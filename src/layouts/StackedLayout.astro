@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import MobileHeader from '../components/MobileHeader.astro';
 ---
 <html lang="en">
   <head>
@@ -8,7 +9,12 @@ import Header from '../components/Header.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <Header/>
+    <div class="hidden lg:block">
+      <Header />
+    </div>
+    <div class="lg:hidden">
+      <MobileHeader />
+    </div>
     <article>
       <slot />
     </article>

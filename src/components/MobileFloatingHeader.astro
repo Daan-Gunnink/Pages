@@ -13,28 +13,28 @@ const headerTitle = data?.story?.content.header_title;
 ---
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-    var mobileMenu = document.getElementById("mobile-menu");
-    var toggleIcon = document.getElementById("toggle-icon");
-    var menuIcon = document.getElementById("menu-icon");
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   var mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  //   var mobileMenu = document.getElementById("mobile-menu");
+  //   var toggleIcon = document.getElementById("toggle-icon");
+  //   var menuIcon = document.getElementById("menu-icon");
 
 
-    mobileMenu.style.display = "none"
+  //   mobileMenu.style.display = "none"
 
-    mobileMenuToggle.addEventListener("click", function () {
-      if (mobileMenu.style.display === "block") {
-        mobileMenu.style.display = "none";
-        toggleIcon.style.display = "none"
-        menuIcon.style.display = "block"
+  //   mobileMenuToggle.addEventListener("click", function () {
+  //     if (mobileMenu.style.display === "block") {
+  //       mobileMenu.style.display = "none";
+  //       toggleIcon.style.display = "none"
+  //       menuIcon.style.display = "block"
 
-      } else {
-        mobileMenu.style.display = "block";
-        toggleIcon.style.display = "block"
-        menuIcon.style.display = "none"
-      }
-    });
-  });
+  //     } else {
+  //       mobileMenu.style.display = "block";
+  //       toggleIcon.style.display = "block"
+  //       menuIcon.style.display = "none"
+  //     }
+  //   });
+  // });
 </script>
 <header
   class="w-full h-fit absolute bg-gradient-to-b from-gray-900 to-transparent py-20"
