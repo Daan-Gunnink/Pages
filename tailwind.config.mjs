@@ -6,7 +6,8 @@ export default {
 	safelist: [
 		{
 			pattern: /grid-cols-./,
-		}
+			variants: ['lg', 'md']
+		},
 	  ],
 	theme: {},
 	plugins: [],

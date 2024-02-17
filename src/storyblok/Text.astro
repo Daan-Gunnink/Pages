@@ -5,8 +5,6 @@ console.log(blok.text.content[0].content[0].marks)
 import { renderRichText } from "@storyblok/js";
 const renderedRichText = renderRichText(blok.text);
 
-console.log(renderedRichText)
-
 ---
 
 <div class="mr-4 ml-4" set:html={renderedRichText}></div>
