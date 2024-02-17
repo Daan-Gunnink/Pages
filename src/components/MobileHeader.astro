@@ -37,7 +37,7 @@ const headerTitle = data?.story?.content.header_title;
         toggleIcon.style.display = "block";
         menuIcon.style.display = "none";
         mobileHeader ? mobileHeader.style.backdropFilter = 'blur(8px)' : {}
-        layout.style.overflow = "clip"
+        layout.style.overflow = "hidden"
 
       }
     });
@@ -46,7 +46,7 @@ const headerTitle = data?.story?.content.header_title;
 <header class="w-full h-full">
   <div class="w-full h-fit bg-gradient-to-b bg-white shadow-md py-12">
     <div class="container w-fit h-full mx-auto flex flex-col space-y-4">
-      <div class="flex flex-row space-x-10">
+      <div class="flex flex-row gap-6">
         <button id="mobile-menu-toggle">
           <Icon
             id="toggle-icon"
