@@ -10,6 +10,8 @@ const env = loadEnv("", process.cwd(), "STORYBLOK");
 // https://astro.build/config
 export default defineConfig({
   integrations: [storyblok({
+    enableFallbackComponent: true,
+    customFallbackComponent: "storyblok/FallBackComponent",
     accessToken: env.STORYBLOK_TOKEN,
     components: {
       config: "storyblok/Config",

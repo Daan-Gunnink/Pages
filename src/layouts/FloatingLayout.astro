@@ -1,4 +1,5 @@
 ---
+const { meta } = Astro.props
 import FloatingHeader from "../components/FloatingHeader.astro";
 import MobileFloatingHeader from "../components/MobileFloatingHeader.astro";
 ---
@@ -7,6 +8,11 @@ import MobileFloatingHeader from "../components/MobileFloatingHeader.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta && meta.Title}</title>
+    <meta name="description" content={meta && meta.Description}/>
+    <meta property="og:title" content={meta && meta.OGTitle}/>
+    <meta property="og:description" content={meta && meta.OGDescription}/>
+    <meta property="og:image" content={meta && meta.OGImage && meta.OGImage.filename}/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>

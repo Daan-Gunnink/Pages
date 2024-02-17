@@ -6,11 +6,13 @@ import StackedLayout from '../layouts/StackedLayout.astro'
 
 const { blok } = Astro.props;
 
+const meta = blok.Meta && blok.Meta[0] || null
+
 const layout = blok.layout || 'layout_stacked';
 ---
 {
   layout === "layout_floating" && (
-    <FloatingLayout>
+    <FloatingLayout meta={meta}>
       <main {...storyblokEditable(blok)}>
         {blok.body?.map((blok) => {
           return <StoryblokComponent blok={blok} />;
@@ -22,7 +24,7 @@ const layout = blok.layout || 'layout_stacked';
 
 {
   layout === "layout_stacked" && (
-    <StackedLayout>
+    <StackedLayout meta={meta}>
       <main {...storyblokEditable(blok)}>
         {blok.body?.map((blok) => {
           return <StoryblokComponent blok={blok} />;
