@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 const { blok } = Astro.props
 
 let imageUrl = blok.image && blok.image.filename
@@ -10,5 +11,5 @@ if(imageUrl){
 }
 
 ---
-<img class="w-screen h-screen object-cover" src={imageUrl}/>
+<Image class="w-screen h-screen object-cover" src={imageUrl} inferSize alt="Screen Filling Image" />
 
