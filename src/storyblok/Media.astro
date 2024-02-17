@@ -1,0 +1,10 @@
+---
+import { Image } from "astro:assets";
+
+const { blok } = Astro.props;
+const filename = blok.asset.filename;
+---
+
+<div class="h-fit w-full">
+  <Image src={`${filename}/m/1920x0`} inferSize alt="image" />
+</div>

@@ -16,11 +16,14 @@ export default defineConfig({
     components: {
       blogPost: "storyblok/BlogPost",
       blogPostList: "storyblok/BlogPostList",
+      columns: "storyblok/Columns",
       config: "storyblok/Config",
+      media: "storyblok/Media",
       page: "storyblok/Page",
       pageLink: "storyblok/PageLink",
       pageLinks: "storyblok/PageLinks",
       screenFillingImage: "storyblok/ScreenFillingImage",
+      spacer: "storyblok/Spacer",
       text: "storyblok/Text",
       tiledGallery: "storyblok/TiledGallery"
     }
