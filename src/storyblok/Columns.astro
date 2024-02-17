@@ -6,7 +6,6 @@ const { blok } = Astro.props;
 const content = blok.items;
 const numberOfColumns = blok.columns;
 
-console.log(blok)
 const columns = Array.from({ length: numberOfColumns }, () => []);
 
 for (let i = 0; i < content.length; i++) {

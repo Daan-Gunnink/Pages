@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 const { blok } = Astro.props;
 const title = blok && blok.Title
 const image = blok && blok.Image && blok.Image.filename || null 
-console.log(blok);
 ---
 
 <a class="w-full h-full flex hover:cursor-pointer shadow-lg rounded-lg" href={blok.Link.cached_url}>
