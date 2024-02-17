@@ -14,12 +14,14 @@ export default defineConfig({
     customFallbackComponent: "storyblok/FallBackComponent",
     accessToken: env.STORYBLOK_TOKEN,
     components: {
-      config: "storyblok/Config",
       blogPost: "storyblok/BlogPost",
+      blogPostList: "storyblok/BlogPostList",
+      config: "storyblok/Config",
+      page: "storyblok/Page",
+      pageLink: "storyblok/PageLink",
+      pageLinks: "storyblok/PageLinks",
       screenFillingImage: "storyblok/ScreenFillingImage",
       text: "storyblok/Text",
-      page: "storyblok/Page",
-      blogPostList: "storyblok/BlogPostList",
       tiledGallery: "storyblok/TiledGallery"
     }
   }), tailwind(), icon()],

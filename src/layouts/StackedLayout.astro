@@ -26,9 +26,11 @@ import MobileHeader from "../components/MobileHeader.astro";
       <div class="lg:hidden">
         <MobileHeader />
       </div>
-      <article>
-        <slot />
-      </article>
+      <div class="h-[calc(100%-8rem)]">
+        <article class="h-full">
+          <slot class="h-full" />
+        </article>
+      </div>
     </div>
   </body>
 </html>

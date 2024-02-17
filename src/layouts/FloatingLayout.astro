@@ -26,9 +26,11 @@ import MobileFloatingHeader from "../components/MobileFloatingHeader.astro";
       <div class="lg:hidden">
         <MobileFloatingHeader />
       </div>
-      <article>
-        <slot />
-      </article>
+      <div class="h-full">
+        <article class="h-full">
+          <slot />
+        </article>
+      </div>
     </div>
   </body>
 </html>

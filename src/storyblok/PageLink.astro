@@ -1,0 +1,11 @@
+---
+import { Image } from "astro:assets";
+const { blok } = Astro.props;
+const title = blok && blok.Title
+const image = blok && blok.Image && blok.Image.filename || null 
+console.log(blok);
+---
+
+<a class="w-full h-full flex hover:cursor-pointer shadow-lg rounded-lg" href={blok.Link.cached_url}>
+    <Image class=" rounded-lg shadow-lg hover:scale-[1.02] duration-300 ease-in-out" src={image} alt={title} inferSize/>
+</a>
