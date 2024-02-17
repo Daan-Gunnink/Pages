@@ -6,7 +6,7 @@ import StackedLayout from '../layouts/StackedLayout.astro'
 
 const { blok } = Astro.props;
 
-const meta = blok.meta && blok.Meta[0] || null
+const meta = blok.meta && blok.meta[0] || null
 
 const layout = blok.layout || 'layout_stacked';
 ---
