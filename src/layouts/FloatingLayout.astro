@@ -1,5 +1,5 @@
 ---
-const { meta } = Astro.props
+const { meta } = Astro.props;
 import FloatingHeader from "../components/FloatingHeader.astro";
 import MobileFloatingHeader from "../components/MobileFloatingHeader.astro";
 ---
@@ -9,21 +9,26 @@ import MobileFloatingHeader from "../components/MobileFloatingHeader.astro";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{meta && meta.Title}</title>
-    <meta name="description" content={meta && meta.Description}/>
-    <meta property="og:title" content={meta && meta.OGTitle}/>
-    <meta property="og:description" content={meta && meta.OGDescription}/>
-    <meta property="og:image" content={meta && meta.OGImage && meta.OGImage.filename}/>
+    <meta name="description" content={meta && meta.Description} />
+    <meta property="og:title" content={meta && meta.OGTitle} />
+    <meta property="og:description" content={meta && meta.OGDescription} />
+    <meta
+      property="og:image"
+      content={meta && meta.OGImage && meta.OGImage.filename}
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <div class="hidden lg:block">
-      <FloatingHeader />
+    <div id="layout" class="h-screen">
+      <div class="hidden lg:block">
+        <FloatingHeader />
+      </div>
+      <div class="lg:hidden">
+        <MobileFloatingHeader />
+      </div>
+      <article>
+        <slot />
+      </article>
     </div>
-    <div class="lg:hidden">
-      <MobileFloatingHeader />
-    </div>
-    <article>
-      <slot />
-    </article>
   </body>
 </html>

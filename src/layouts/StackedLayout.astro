@@ -1,28 +1,34 @@
 ---
-const { meta } = Astro.props
-import Header from '../components/Header.astro';
-import MobileHeader from '../components/MobileHeader.astro';
+const { meta } = Astro.props;
+import Header from "../components/Header.astro";
+import MobileHeader from "../components/MobileHeader.astro";
 ---
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{meta && meta.Title}</title>
-    <meta name="description" content={meta && meta.Description}/>
-    <meta property="og:title" content={meta && meta.OGTitle}/>
-    <meta property="og:description" content={meta && meta.OGDescription}/>
-    <meta property="og:image" content={meta && meta.OGImage && meta.OGImage.filename}/>
+    <meta name="description" content={meta && meta.Description} />
+    <meta property="og:title" content={meta && meta.OGTitle} />
+    <meta property="og:description" content={meta && meta.OGDescription} />
+    <meta
+      property="og:image"
+      content={meta && meta.OGImage && meta.OGImage.filename}
+    />
   </head>
   <body>
-    <div class="hidden lg:block">
-      <Header />
+    <div id="layout" class="h-screen">
+      <div class="hidden lg:block">
+        <Header />
+      </div>
+      <div class="lg:hidden">
+        <MobileHeader />
+      </div>
+      <article>
+        <slot />
+      </article>
     </div>
-    <div class="lg:hidden">
-      <MobileHeader />
-    </div>
-    <article>
-      <slot />
-    </article>
   </body>
 </html>
