@@ -3,28 +3,26 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 const { blok } = Astro.props;
 
-const content = blok.items;
+const contentData = blok.items;
 const numberOfColumns = blok.columns;
 
 const columns = Array.from({ length: numberOfColumns }, () => []);
 
-for (let i = 0; i < content.length; i++) {
+for (let i = 0; i < contentData.length; i++) {
   const arrayIndex = i % numberOfColumns;
-  columns[arrayIndex].push(content[i]);
+  columns[arrayIndex].push(contentData[i]);
 }
-
 ---
- 
-<div class={`grid md:grid-cols-${numberOfColumns} gap-4 p-4`}>
-    {columns.map((column, columnIndex) => (
-      <div key={columnIndex} class="flex flex-wrap">
-        {column.map((content, contentIndex) => (
-          <div key={contentIndex} class="w-full h-fit aspect-video">
-            <div class="flex items-center justify-center h-full">
-              <StoryblokComponent blok={content} />
-            </div>
-          </div>
-        ))}
-      </div>
-    ))}
-  </div>
+
+<div class={`grid grid-cols-1 md:grid-cols-${numberOfColumns} gap-4 p-4`}>
+  {
+    contentData.map((content) => {
+      const span = content.Span;
+      return (
+        <div class={`flex items-center justify-center h-fit ${span}`}>
+          <StoryblokComponent blok={content} />
+        </div>
+      );
+    })
+  }
+</div>

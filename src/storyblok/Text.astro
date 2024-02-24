@@ -1,10 +1,20 @@
 ---
-const { blok } = Astro.props
+const { blok } = Astro.props;
 
 import { renderRichText } from "@storyblok/js";
 const renderedRichText = renderRichText(blok.text);
 
+const { span, verticalAllignment, textAllignment, horizontalAllignment, width } = blok;
 ---
-<div class="h-fit w-full flex justify-center items-center">
-    <div class="text-center flex gap-y-4 flex-col" set:html={renderedRichText}></div>
-</div>
+
+<div
+  class={"flex flex-col gap-4" + " " +
+    [
+      span,
+      verticalAllignment,
+      horizontalAllignment,
+      textAllignment,
+      width,
+    ].join(" ")}
+  set:html={renderedRichText}
+/>

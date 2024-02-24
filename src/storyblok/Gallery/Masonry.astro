@@ -1,0 +1,27 @@
+---
+//TODO better divide the columns to make an even distribution possibily
+//TODO support full width blocks
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+const { blok } = Astro.props;
+
+const { items, columns } = blok;
+const columnsData = Array.from({ length: columns }, () => []);
+
+for (let i = 0; i < items.length; i++) {
+  const arrayIndex = i % columns;
+  columnsData[arrayIndex].push(items[i]);
+}
+
+---
+
+<div class=`grid grid-cols-1 md:grid-cols-${columns} gap-2 p-2`>
+  {
+    columnsData.map((column) => (
+      <div class="grid gap-2 h-fit">
+        {column.map((content) => (
+          <StoryblokComponent blok={content} />
+        ))}
+      </div>
+    ))
+  }
+</div>

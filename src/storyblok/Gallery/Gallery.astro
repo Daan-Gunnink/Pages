@@ -1,0 +1,11 @@
+---
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import Grid from "./Grid.astro";
+import Masonry from "./Masonry.astro";
+
+const { blok } = Astro.props;
+const type = blok.galleryType || "grid";
+---
+
+{type === "grid" && <Grid blok={blok} />}
+{type === "masonry" && <Masonry blok={blok} />}

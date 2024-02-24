@@ -5,6 +5,13 @@ const { blok } = Astro.props;
 const filename = blok.asset.filename;
 ---
 
-<div class="h-fit w-full">
-  <Image src={`${filename}/m/1920x0`} inferSize alt="image" />
-</div>
+{
+  filename && (
+    <Image
+      class="h-full w-full object-contain"
+      src={`${filename}/m/1920x0`}
+      inferSize
+      alt="image"
+    />
+  )
+}
