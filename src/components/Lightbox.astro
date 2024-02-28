@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+type Asset = {
+  filename: string;
+};
+
+type Media = {
+  asset: Asset;
+};
+
+export interface Props {
+  imagesList: Media[];
+  initialIndex: number;
+}
+const { imagesList } = Astro.props;
+---
+
+<astro-lightbox id="astro-lightbox" data-images={JSON.stringify(imagesList)}>
+  <div
+    id="astro-lightbox-wrapper"
+    class="w-full h-full bg-black bg-opacity-75 fixed top-0 backdrop-blur"
+  >
+    <Icon
+      id="close-icon"
+      class="w-12 h-12 text-white top-0 right-0 m-4 absolute hover:cursor-pointer"
+      name="close"
+      aria-label="Open Mobile Menu"
+    />
+    <Icon
+      id="previous-icon"
+      class="w-12 h-12 text-white top-1/2 -translate-y-1/2 mx-8 absolute hover:cursor-pointer"
+      name="chevron_left"
+      aria-label="Open Mobile Menu"
+    />
+    <Icon
+      id="next-icon"
+      class="w-12 h-12 text-white top-1/2 -translate-y-1/2 mx-8 right-0 m-8 absolute hover:cursor-pointer"
+      name="chevron_right"
+      aria-label="Open Mobile Menu"
+    />
+    <img
+      id="image-element"
+      class="h-full w-full object-contain p-8 touch-pinch-zoom"
+      src={imagesList[0].asset.filename}
+    />
+  </div>
+</astro-lightbox>
+
+<script>
+  var currentIndex = 0;
+
+  let closeIcon: HTMLElement | null;
+  let previousIcon: HTMLElement | null;
+  let nextIcon: HTMLElement | null;
+  let imageHolder: HTMLElement | null;
+  let lightbox: HTMLElement | null;
+
+  class AstroLightbox extends HTMLElement {
+    openLightbox: () => void;
+    openLightboxAt: (index: number) => void;
+    constructor() {
+      super();
+
+      closeIcon = document.getElementById("close-icon");
+      previousIcon = document.getElementById("previous-icon");
+      nextIcon = document.getElementById("next-icon");
+      imageHolder = document.getElementById("image-element");
+      lightbox = document.getElementById("astro-lightbox-wrapper");
+
+      closeLightbox();
+
+      // Read the message from the data attribute.
+      const images = JSON.parse(this.dataset.images || "");
+
+      nextIcon?.addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % images.length;
+        if (currentIndex < 0) currentIndex = images.length - 1;
+        updateImage();
+      });
+
+      previousIcon?.addEventListener("click", function () {
+        currentIndex = (currentIndex - 1) % images.length;
+        if (currentIndex < 0) currentIndex = images.length - 1;
+        updateImage();
+      });
+
+      closeIcon?.addEventListener("click", function () {
+        lightbox && (lightbox.style.display = "none");
+      });
+
+      this.openLightboxAt = function (index: number) {
+        currentIndex = index;
+        updateImage();
+        this.openLightbox();
+      };
+
+      this.openLightbox = function () {
+        lightbox && (lightbox.style.display = "unset");
+      };
+
+      function closeLightbox(){
+        lightbox && (lightbox.style.display = "none");
+      }
+
+      function updateImage() {
+        imageHolder && (imageHolder.src = images[currentIndex].asset.filename);
+      }
+    }
+  }
+
+  customElements.define("astro-lightbox", AstroLightbox);
+</script>

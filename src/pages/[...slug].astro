@@ -1,8 +1,8 @@
 ---
-export const prerender = true
+export const prerender = true;
 import { useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import '../global.css'
+import "../global.css";
 
 export async function getStaticPaths() {
   const storyblokApi = useStoryblokApi();
@@ -39,5 +39,4 @@ const { data } = await storyblokApi.get(
 
 const story = data.story;
 ---
-
 <StoryblokComponent blok={story.content} />

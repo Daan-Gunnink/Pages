@@ -4,12 +4,12 @@ const { blok } = Astro.props
 
 let imageUrl = blok.image && blok.image.filename
 
-if(imageUrl){
+if(imageUrl && !blok.image.is_external_url){
     if(blok.image.focus){
         imageUrl = imageUrl + `/m/1920x1080/filters:focal(${blok.image.focus})`
     }
 }
 
 ---
-<Image class="w-screen h-full object-cover" src={imageUrl} inferSize alt="Screen Filling Image" />
+<img class="w-screen h-full object-cover" src={imageUrl} alt="Screen Filling Image" />
 

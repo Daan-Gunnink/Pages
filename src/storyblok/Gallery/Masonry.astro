@@ -2,25 +2,59 @@
 //TODO better divide the columns to make an even distribution possibily
 //TODO support full width blocks
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import Lightbox from "../../components/Lightbox.astro";
+import { createPrinter } from "typescript";
 const { blok } = Astro.props;
 
+type columnItem = {
+  content: [];
+  index: number;
+};
+
 const { items, columns } = blok;
-const columnsData = Array.from({ length: columns }, () => []);
+
+const temporaryDataMap = new Map();
 
 for (let i = 0; i < items.length; i++) {
   const arrayIndex = i % columns;
-  columnsData[arrayIndex].push(items[i]);
+
+  const data = temporaryDataMap.get(arrayIndex) || {};
+  data[i] = items[i];
+  temporaryDataMap.set(arrayIndex, data);
 }
+
+const images = items.filter(
+  (item) =>
+    item.asset && item.asset.fieldtype && item.asset.fieldtype === "asset" && item.asset.filename
+);
 
 ---
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const Lightbox = document.getElementById("astro-lightbox");
+    const GalleryImages = [...document.getElementsByTagName("img")].filter(
+      (item) => item.id.startsWith("gallery-image")
+    );
+    GalleryImages.forEach((image) => {
+      image.addEventListener("click", () => {
+        const index = image.id.split("gallery-image-")[1];
+        Lightbox.openLightboxAt(index);
+      });
+    });
+  });
+</script>
+
+<Lightbox imagesList={images} />
 <div class=`grid grid-cols-1 md:grid-cols-${columns} gap-2 p-2`>
   {
-    columnsData.map((column) => (
+    Array.from(temporaryDataMap.values()).map((column) => (
       <div class="grid gap-2 h-fit">
-        {column.map((content) => (
-          <StoryblokComponent blok={content} />
-        ))}
+        {Object.entries(column).map((entry) => {
+          const index = entry[0];
+          const content = entry[1];
+          return <StoryblokComponent blok={content} index={index} />;
+        })}
       </div>
     ))
   }

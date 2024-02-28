@@ -1,13 +1,14 @@
 ---
 import { Image } from "astro:assets";
 
-const { blok } = Astro.props;
+const { blok, index } = Astro.props;
 const filename = blok.asset.filename;
 ---
 
 {
   filename && (
     <Image
+      id={`gallery-image-${index}`}
       class="h-full w-full object-contain"
       src={`${filename}/m/1920x0`}
       inferSize
